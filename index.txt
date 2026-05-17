@@ -182,10 +182,9 @@ function redirectPage() {
     // SABATO
     else if(day === 6){
 
-        // Nessun programma
-        url = null;
-
-    }
+        if(hour >=17 && hour <23){
+            url = "https://tiktok.com";
+  }
 
 
 
