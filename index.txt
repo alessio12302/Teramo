@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amadori - Allevamento di Morro D'Oro</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#005c3b;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+    width:90%;
+}
+
+.logo{
+    width:320px;
+    max-width:80%;
+}
+
+h1{
+    font-size:2rem;
+    font-weight:600;
+}
+
+.btn{
+    margin-top:15px;
+    background:white;
+    color:#005c3b;
+    border:none;
+    padding:18px 60px;
+    font-size:1.4rem;
+    font-weight:bold;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+.message{
+    margin-top:10px;
+    font-size:1.2rem;
+    font-weight:bold;
+    color:white;
+    min-height:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <img src="logo.png" class="logo" alt="Logo Amadori">
+
+    <h1>Allevamento di Morro D'Oro</h1>
+
+    <button class="btn" onclick="redirectPage()">
+        ACCEDI
+    </button>
+
+    <div class="message" id="message"></div>
+
+</div>
+
+<script>
+
+function redirectPage() {
+
+    const now = new Date();
+
+    // Giorno corrente
+    // 0 = Domenica
+    // 1 = Lunedì
+    // 2 = Martedì
+    // 3 = Mercoledì
+    // 4 = Giovedì
+    // 5 = Venerdì
+    // 6 = Sabato
+
+    const day = now.getDay();
+
+    // Ora corrente
+    const hour = now.getHours();
+
+    let url = null;
+
+    // Reset messaggio
+    document.getElementById("message").innerText = "";
+
+
+
+    /*
+    ====================================
+    CONFIGURAZIONE PROGRAMMI
+    ====================================
+    */
+
+
+
+    // LUNEDÌ
+    if(day === 1){
+
+        if(hour >= 8 && hour < 12){
+            url = "https://google.com";
+        }
+
+        else if(hour >= 14 && hour < 18){
+            url = "https://youtube.com";
+        }
+
+    }
+
+
+
+    // MARTEDÌ
+    else if(day === 2){
+
+        if(hour >= 9 && hour < 17){
+            url = "https://facebook.com";
+        }
+
+    }
+
+
+
+    // MERCOLEDÌ
+    else if(day === 3){
+
+        // Nessun programma
+        url = null;
+
+    }
+
+
+
+    // GIOVEDÌ
+    else if(day === 4){
+
+        if(hour >= 10 && hour < 13){
+            url = "https://instagram.com";
+        }
+
+    }
+
+
+
+    // VENERDÌ
+    else if(day === 5){
+
+        if(hour >= 15 && hour < 20){
+            url = "https://tiktok.com";
+        }
+
+    }
+
+
+
+    // SABATO
+    else if(day === 6){
+
+        // Nessun programma
+        url = null;
+
+    }
+
+
+
+    // DOMENICA
+    else if(day === 0){
+
+        // Nessun programma
+        url = null;
+
+    }
+
+
+
+    /*
+    ====================================
+    AZIONE FINALE
+    ====================================
+    */
+
+    if(url){
+
+        window.location.href = url;
+
+    } else {
+
+        document.getElementById("message").innerText =
+            "Nessun programma di carico";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
